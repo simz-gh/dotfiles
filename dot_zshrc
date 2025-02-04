@@ -1,16 +1,7 @@
-# path for zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share/}/zinit/zinit.git"
-
-# download and check 
-if [ ! -d "$ZINIT_HOME" ]; then 
-    mkdir -p "$(dirname $ZINIT_HOME)"
-    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-source "${ZINIT_HOME/zinit.zsh}"
-
-# # cachy os zsh
-# source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Detect AUR wrapper
 if pacman -Qi yay &>/dev/null; then
@@ -68,10 +59,32 @@ alias .5='cd ../../../../..'
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# Display Pokemon
-# pokemon-colorscripts --no-title -r 1,3,6
+#The fuck
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
 
+# Zinit plugins
+# Plugin history-search-multi-word loaded with investigating.
+zinit load zdharma-continuum/history-search-multi-word
+
+# Two regular plugins loaded without investigating.
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# Snippet
+zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
+
+# Load starship theme
+# line 1: `starship` binary as command, from github release
+# line 2: starship setup at clone(create init.zsh, completion)
+# line 3: pull behavior same as clone, source init.zsh
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
 . /opt/asdf-vm/asdf.sh
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit

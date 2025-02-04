@@ -1,6 +1,6 @@
 # chezmoi laptop-specific configuration
 # https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#use-completely-different-dotfiles-on-different-machines
-{{ - if eq .chezmoi.hostname "s-lt" }}
+{{ if eq .chezmoi.hostname "s-lt" -}}
 
 # launch
 exec-once = swayidle -w timeout 600 'swaylock' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' # lock after 10 mins, sleep after 15 mins // install swayidle

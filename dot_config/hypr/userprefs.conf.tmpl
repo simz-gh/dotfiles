@@ -1,0 +1,43 @@
+# launch
+exec-once = swayidle -w timeout 600 'swaylock' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' # lock after 10 mins, sleep after 15 mins // install swayidle
+exec-once = swayidle -w timeout 1200 'swaylock; hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' timeout 1800 'systemctl suspend' # lock and sleep after 20 mins, suspend after 30 mins // install swayidle
+exec-once = libinput-gestures // install libinput-gestures
+exec-once = swayosd-server # enable swayosd service
+exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard input (requires to be run in a subshell)  
+
+input {
+	kb_layout = dk
+    kb_options = altwin:swap_lalt_lwin, #caps:swapescape, 
+}
+
+decoration {
+    blur {
+        # https://wiki.hyprland.org/Configuring/Variables/#blur
+        enabled = yes
+        size = 6
+        passes = 2 # default 3 -> Increasing blur:passes is necessary to prevent blur looking wrong on higher blur:size values, but remember that higher blur:passes will require more strain on the GPU.
+        special = no
+        # ignore_opacity = off
+    }
+}
+
+dwindle {
+    special_scale_factor = 0.95
+}
+
+misc {
+    vrr = 2
+}
+
+render {
+    direct_scanout = yes
+}
+
+cursor {
+    no_break_fs_vrr = yes
+}
+
+experimental {
+    hdr = no
+    wide_color_gamut = yes
+}

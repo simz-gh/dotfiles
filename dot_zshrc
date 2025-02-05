@@ -3,6 +3,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# asdf -> https://asdf-vm.com/guide/getting-started.html
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Detect AUR wrapper
 if pacman -Qi yay &>/dev/null; then
    aurhelper="yay"
@@ -73,9 +76,6 @@ zinit load jirutka/zsh-shift-select
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# Snippet
-zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
-
 # Load starship theme
 # line 1: `starship` binary as command, from github release
 # line 2: starship setup at clone(create init.zsh, completion)
@@ -84,8 +84,6 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
-
-. /opt/asdf-vm/asdf.sh
 
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit

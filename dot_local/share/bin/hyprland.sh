@@ -21,11 +21,6 @@ export USER=s
 [ -z $DBUS_SESSION_BUS_ADDRESS ] && export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 export HYPRLAND_LOG_WLR=1
-# export XCURSOR_SIZE=20
-# 
-# # change the theme here
-# export XCURSOR_THEME=Bibata-Modern-Classic
-# export GTK_THEME=Adwaita-amoled-dark-Fix
 
 [ ! -f /run/udev/data/+drm:card0-eDP-1 ] \
  && echo "Hyprland needs drm, bailing out" && exit -1

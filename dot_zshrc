@@ -85,5 +85,9 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
+# https://github.com/so-fancy/diff-so-fancy/blob/next/pro-tips.md
+zinit ice lucid as"program" pick"bin/git-dsf"
+zinit load so-fancy/diff-so-fancy
+
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit

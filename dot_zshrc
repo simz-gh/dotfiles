@@ -72,9 +72,10 @@ eval $(thefuck --alias FUCK)
 zinit load zdharma-continuum/history-search-multi-word
 zinit load jirutka/zsh-shift-select
 
-# Two regular plugins loaded without investigating.
+# Regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
 
 # Load starship theme
 # line 1: `starship` binary as command, from github release

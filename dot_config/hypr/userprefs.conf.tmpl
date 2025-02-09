@@ -19,6 +19,12 @@ input {
     kb_options = altwin:swap_lalt_lwin, #caps:swapescape, 
 }
 
+device {
+    name = asustek-rog-giii-wireless-aimpoint
+    accel_profile =  adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
+    sensitivity = -0.0 # -1.0 - 1.0 
+}
+
 decoration {
     blur {
         # https://wiki.hyprland.org/Configuring/Variables/#blur

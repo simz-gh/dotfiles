@@ -86,19 +86,17 @@ envd = QT_CURSOR_SIZE,20
 # ╹╹ ╹╹  ┗━┛ ╹
 # https://wiki.hyprland.org/Configuring/Variables/#input
 
-# using
+# device {
+#     name = asustek-rog-giii-wireless-aimpoint
+#     accel_profile = adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
+#     sensitivity = -0.0 # -1.0 - 1.0 
+# }
 
-device {
-    name = asustek-rog-giii-wireless-aimpoint
-    accel_profile = adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
-    sensitivity = -0.0 # -1.0 - 1.0 
-}
-
-device {
-    name = razer-razer-deathadder-v3-pro
-    accel_profile = adaptive  
-    sensitivity = -0.0 # -1.0 - 1.0 
-}
+# device {
+#     name = razer-razer-deathadder-v3-pro
+#     accel_profile = adaptive  
+#     sensitivity = -0.0 # -1.0 - 1.0 
+# }
 
 device {
     name = pulsar-xlite-v3-1
@@ -113,7 +111,7 @@ device {
     repeat_delay = 300 
     enabled = true
 }
- 
+
 device {
     name = keychron-keychron-v1-max
     kb_layout = dk
@@ -154,7 +152,6 @@ decoration {
     }
 }
 
-
 # ┏┳┓╻┏━┓┏━╸
 # ┃┃┃┃┗━┓┃
 # ╹ ╹╹┗━┛┗━╸
@@ -178,8 +175,8 @@ cursor {
 }
 
 experimental {
-   hdr = yes
-#    wide_color_gamut = yes
+	hdr = yes
+	wide_color_gamut = yes
 }
 
 {{ end -}}

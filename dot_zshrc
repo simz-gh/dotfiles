@@ -1,8 +1,17 @@
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#  Startup   
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Integrations shell env 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# On-demand rehash of zsh -> https://wiki.archlinux.org/title/Zsh#On-demand_rehash
 zshcache_time="$(date +%s%N)"
 
 autoload -Uz add-zsh-hook
@@ -17,7 +26,6 @@ rehash_precmd() {
   fi
 }
 
-
 # Ghostty shell integration for Bash. This should be at the top of your bashrc!
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
     builtin source ${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration
@@ -26,41 +34,24 @@ fi
 # asdf -> https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-# Detect AUR wrapper
-if pacman -Qi yay &>/dev/null; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
-   aurhelper="paru"
-fi
+# Taken from -> https://github.com/CachyOS/cachyos-zsh-config/blob/master/cachyos-config.zsh
+# Ignore commands that start with spaces and duplicates.
+export HISTCONTROL=ignoreboth
 
-function in {
-    local -a inPkg=("$@")
-    local -a arch=()
-    local -a aur=()
+# Don't add certain commands to the history file.
+export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 
-    for pkg in "${inPkg[@]}"; do
-        if pacman -Si "${pkg}" &>/dev/null; then
-            arch+=("${pkg}")
-        else
-            aur+=("${pkg}")
-        fi
-    done
+# Use custom `less` colors for `man` pages.
+export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
+export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
 
-    if [[ ${#arch[@]} -gt 0 ]]; then
-        sudo pacman -S "${arch[@]}"
-    fi
+# Make new shells get the history lines from all previous
+# shells instead of the default "last window closed" history.
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-    if [[ ${#aur[@]} -gt 0 ]]; then
-        ${aurhelper} -S "${aur[@]}"
-    fi
-}
-
-# aliases
-alias cat='lolcat'
-alias c='clear' # clear terminal
-alias cm='chezmoi'
-alias f='fuck'
-alias jctl="journalctl -p 3 -xb"
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Aliases 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # directory navigation shortcuts
 alias ..='cd ..'
@@ -69,22 +60,26 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# eza
+# external tools
+alias cat='lolcat'
+alias cm='chezmoi'
+alias f='fuck'
 alias l='eza -lh --icons=auto' # long list
 alias ls='eza -1 --icons=auto' # short list
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
+ 
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
 
-#The fuck
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# Recent installed packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# package helper
+# package helper 
 alias un='$aurhelper -Rns' # uninstall package
 alias up='$aurhelper -Syu' # update system/package/aur
 alias pl='$aurhelper -Qs' # list installed package
@@ -92,10 +87,20 @@ alias pa='$aurhelper -Ss' # list available package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 
-# Recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# The fuck 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Zinit plugins
+eval $(thefuck --alias)
+
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
+
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Zinit plugins 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Plugin history-search-multi-word loaded with investigating.
 zinit load zdharma-continuum/history-search-multi-word
 zinit load jirutka/zsh-shift-select

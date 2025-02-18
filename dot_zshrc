@@ -63,7 +63,6 @@ alias mkdir='mkdir -p'
 
 # package helper 
 alias uni='$aurhelper -Rns' # uninstall package
-alias upd='sudo  $HOME/.local/share/bin/systemupdate.sh'  # update system/package/aur
 alias lpa='$aurhelper -Qs' # list installed package
 alias lap='$aurhelper -Ss' # list available package
 alias pca='$aurhelper -Sc' # remove unused cache

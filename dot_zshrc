@@ -80,12 +80,12 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias mkdir='mkdir -p'
 
 # package helper 
-alias un='$aurhelper -Rns' # uninstall package
-alias up='$aurhelper -Syu' # update system/package/aur
-alias pl='$aurhelper -Qs' # list installed package
-alias pa='$aurhelper -Ss' # list available package
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias uni='$aurhelper -Rns' # uninstall package
+alias upd='sudo systemupdate.sh'  # update system/package/aur
+alias lpa='$aurhelper -Qs' # list installed package
+alias lap='$aurhelper -Ss' # list available package
+alias pca='$aurhelper -Sc' # remove unused cache
+alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # The fuck 

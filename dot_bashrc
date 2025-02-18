@@ -1,0 +1,115 @@
+#  Startup   
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Integrations shell env 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# On-demand rehash of zsh -> https://wiki.archlinux.org/title/Zsh#On-demand_rehash
+zshcache_time="$(date +%s%N)"
+
+autoload -Uz add-zsh-hook
+
+rehash_precmd() {
+  if [[ -a /var/cache/zsh/pacman ]]; then
+    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+    if (( zshcache_time < paccache_time )); then
+      rehash
+      zshcache_time="$paccache_time"
+    fi
+  fi
+}
+
+# Ghostty shell integration for Bash. This should be at the top of your bashrc!
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source ${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration
+fi
+
+# asdf -> https://asdf-vm.com/guide/getting-started.html
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# Aliases 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# directory navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# external tools
+alias cat='lolcat'
+alias cm='chezmoi'
+alias f='fuck'
+alias l='eza -lh --icons=auto' # long list
+alias ls='eza -1 --icons=auto' # short list
+alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
+ 
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+# Recent installed packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+# package helper 
+alias uni='$aurhelper -Rns' # uninstall package
+alias lpa='$aurhelper -Qs' # list installed package
+alias lap='$aurhelper -Ss' # list available package
+alias pca='$aurhelper -Sc' # remove unused cache
+alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+
+# Fastfetch 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+fastfetch -c $HOME/.config/fastfetch/config.jsonc
+
+# The fuck 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+eval $(thefuck --alias)
+
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
+
+# Zinit plugins 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Plugin history-search-multi-word loaded with investigating.
+zinit load zdharma-continuum/history-search-multi-word
+zinit load jirutka/zsh-shift-select
+
+# Regular plugins loaded without investigating.
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+
+# Load starship theme
+# line 1: `starship` binary as command, from github release
+# line 2: starship setup at clone(create init.zsh, completion)
+# line 3: pull behavior same as clone, source init.zsh
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
+# https://github.com/so-fancy/diff-so-fancy/blob/next/pro-tips.md
+zinit ice lucid as"program" pick"bin/git-dsf"
+zinit load so-fancy/diff-so-fancy
+
+# Zsh history 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit

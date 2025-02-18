@@ -4,39 +4,8 @@ XDG_CONFIG_HOME=$HOME/.config
 XDG_DATA_HOME=$HOME/.local/share
 XDG_STATE_HOME=$HOME/.local/state
 
-# taken from https://github.com/HyDE-Project/HyDE/blob/master/Configs/.zshenv
-# cleaning up home folder
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-XDG_CONFIG_DIR="${XDG_CONFIG_DIR:-HOME/.config}"
-XDG_DESKTOP_DIR="${XDG_DESKTOP_DIR:-$HOME/Desktop}"
-XDG_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
-XDG_TEMPLATES_DIR="${XDG_TEMPLATES_DIR:-$HOME/Templates}"
-XDG_PUBLICSHARE_DIR="${XDG_PUBLICSHARE_DIR:-$HOME/Public}"
-XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-$HOME/Documents}"
-XDG_MUSIC_DIR="${XDG_MUSIC_DIR:-$HOME/Music}"
-XDG_PICTURES_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
-XDG_VIDEOS_DIR="${XDG_VIDEOS_DIR:-$HOME/Videos}"
+# Most of these functions have been taken from https://github.com/HyDE-Project/HyDE/blob/master/Configs/.zshenv
 LESSHISTFILE=${LESSHISTFILE:-/tmp/less-hist}
-
-# Command not found handler
-function command_not_found_handler {
-    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-    printf 'zsh: command not found: %s\n' "$1"
-    local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
-    if (( ${#entries[@]} > 0 )); then
-        printf "${bright}$1${reset} may be found in the following packages:\n"
-        local pkg
-        for entry in "${entries[@]}"; do
-            local fields=( ${(0)entry} )
-            if [[ "$pkg" != "${fields[2]}" ]]; then
-                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-            fi
-            printf '    /%s\n' "${fields[4]}"
-            pkg="${fields[2]}"
-        done
-    fi
-    return 127
-}
 
 # Install packages from both Arch and AUR
 function in {
@@ -115,34 +84,3 @@ else
     fi
     echo "$aurhelper" > "$aur_cache_file"
 fi
-
-
-
-# Backup function known to work if the above doesn't
-# function in {
-#     local -a inPkg=("$@")
-#     local -a arch=()
-#     local -a aur=()
-# 
-#     for pkg in "${inPkg[@]}"; do
-#         if pacman -Si "${pkg}" &>/dev/null; then
-#             arch+=("${pkg}")
-#         else
-#             aur+=("${pkg}")
-#         fi
-#     done
-# 
-#     if [[ ${#arch[@]} -gt 0 ]]; then
-#         sudo pacman -S "${arch[@]}"
-#     fi
-# 
-#     if [[ ${#aur[@]} -gt 0 ]]; then
-#         ${aurhelper} -S "${aur[@]}"
-#     fi
-# }
-
-function no_such_file_or_directory_handler {
-    local red='\e[1;31m' reset='\e[0m'
-    printf "${red}zsh: no such file or directory: %s${reset}\n" "$1"
-    return 127
-}

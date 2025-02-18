@@ -70,7 +70,7 @@ alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also 
 
 # Fastfetch 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
+fastfetch -c $HOME/.config/fastfetch/config.jsonc
 
 # The fuck 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

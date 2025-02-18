@@ -68,6 +68,10 @@ alias lap='$aurhelper -Ss' # list available package
 alias pca='$aurhelper -Sc' # remove unused cache
 alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 
+# Fastfetch 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
+
 # The fuck 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 eval $(thefuck --alias)
@@ -102,7 +106,6 @@ zinit load so-fancy/diff-so-fancy
 
 # Zsh history 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000

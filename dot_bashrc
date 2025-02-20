@@ -1,49 +1,53 @@
-# asdf -> https://asdf-vm.com/guide/getting-started.html
+#   ▄▄▄▄    ▄▄▄        ██████  ██░ ██     ▄████▄   ▒█████   ███▄    █   █████▒██▓  ▄████     ▄▄▄▄ ▓██   ██▓     ██████ 
+#  ▓█████▄ ▒████▄    ▒██    ▒ ▓██░ ██▒   ▒██▀ ▀█  ▒██▒  ██▒ ██ ▀█   █ ▓██   ▒▓██▒ ██▒ ▀█▒   ▓█████▄▒██  ██▒   ▒██    ▒ 
+#  ▒██▒ ▄██▒██  ▀█▄  ░ ▓██▄   ▒██▀▀██░   ▒▓█    ▄ ▒██░  ██▒▓██  ▀█ ██▒▒████ ░▒██▒▒██░▄▄▄░   ▒██▒ ▄██▒██ ██░   ░ ▓██▄   
+#  ▒██░█▀  ░██▄▄▄▄██   ▒   ██▒░▓█ ░██    ▒▓▓▄ ▄██▒▒██   ██░▓██▒  ▐▌██▒░▓█▒  ░░██░░▓█  ██▓   ▒██░█▀  ░ ▐██▓░     ▒   ██▒
+#  ░▓█  ▀█▓ ▓█   ▓██▒▒██████▒▒░▓█▒░██▓   ▒ ▓███▀ ░░ ████▓▒░▒██░   ▓██░░▒█░   ░██░░▒▓███▀▒   ░▓█  ▀█▓░ ██▒▓░   ▒██████▒▒
+#  ░▒▓███▀▒ ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒   ░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ▒ ▒  ▒ ░   ░▓   ░▒   ▒    ░▒▓███▀▒ ██▒▒▒    ▒ ▒▓▒ ▒ ░
+#  ▒░▒   ░   ▒   ▒▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░     ░  ▒     ░ ▒ ▒░ ░ ░░   ░ ▒░ ░      ▒ ░  ░   ░    ▒░▒   ░▓██ ░▒░    ░ ░▒  ░ ░
+#   ░    ░   ░   ▒   ░  ░  ░   ░  ░░ ░   ░        ░ ░ ░ ▒     ░   ░ ░  ░ ░    ▒ ░░ ░   ░     ░    ░▒ ▒ ░░     ░  ░  ░  
+#   ░            ░  ░      ░   ░  ░  ░   ░ ░          ░ ░           ░         ░        ░     ░     ░ ░              ░  
+#        ░                               ░                                                        ░░ ░                 
+# 2025
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#   ┓   ┓┓       •     
+#  ┏┣┓┏┓┃┃  ┏┓┏┓╋┓┏┓┏┓┏
+#  ┛┛┗┗ ┗┗  ┗┛┣┛┗┗┗┛┛┗┛
+#             ┛        
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# adding some functionality akin to zsh -> https://github.com/akinomyoga/ble.sh/wiki
+[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
+
+# https://github.com/akinomyoga/ble.sh?tab=readme-ov-file#25-bell
+bleopt edit_bell=vbell vbell_{default_message=' BEL ',duration=3000,align=right}
+
+# managing tools like chezmoi https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-# Aliases 
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#       ┓ 
+#  ╋┏┓┏┓┃┏
+#  ┗┗┛┗┛┗┛
+#         
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# directory navigation shortcuts
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
+fastfetch -c $HOME/.config/fastfetch/config.jsonc|lolcat
 
-# external tools
-alias cat='lolcat'
-alias cm='chezmoi'
-alias f='fuck'
-alias l='eza -lh --icons=auto' # long list
-alias ls='eza -1 --icons=auto' # short list
-alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree' # list folder as tree
- 
-# Get the error messages from journalctl
-alias jctl="journalctl -p 3 -xb"
-
-# Recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
-
-# package helper 
-alias uni='$aurhelper -Rns' # uninstall package
-alias lpa='$aurhelper -Qs' # list installed package
-alias lap='$aurhelper -Ss' # list available package
-alias pca='$aurhelper -Sc' # remove unused cache
-alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-
-# Fastfetch 
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-fastfetch -c $HOME/.config/fastfetch/config.jsonc
-
-# The fuck 
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 eval $(thefuck --alias)
-
 # You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
+# eval $(thefuck --alias FUCK)
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#       ┓  
+#  ┏┓┏┓┏┫  
+#  ┗ ┛┗┗┻  
+#          
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+[[ ${BLE_VERSION-} ]] && ble-attach

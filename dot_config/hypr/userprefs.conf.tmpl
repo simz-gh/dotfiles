@@ -1,18 +1,22 @@
-# https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#use-completely-different-dotfiles-on-different-machines
 {{ if eq .chezmoi.hostname "s-lt" -}}
+#          _______  _____  _______  _____   _____       _______  _____  __   _ _______ _____  ______
+#   |      |_____| |_____]    |    |     | |_____]      |       |     | | \  | |______   |   |  ____
+#   |_____ |     | |          |    |_____| |            |_____  |_____| |  \_| |       __|__ |_____|
+#                                                                                                                 
+# https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#use-completely-different-dotfiles-on-different-machines
+# https://patorjk.com/software/taag/#p=display&c=bash&f=Cybersmall&t=Input
 
-# laptop configuration
 
-# ╻  ┏━┓╻ ╻┏┓╻┏━╸╻ ╻
-# ┃  ┣━┫┃ ┃┃┗┫┃  ┣━┫
-# ┗━╸╹ ╹┗━┛╹ ╹┗━╸╹ ╹
-
+#   _    ____ _  _ __ _ ____ _  _
+#   |___ |--| |__| | \| |___ |--|
 exec-once = swayidle -w timeout 600 'swaylock' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' # lock after 10 mins, sleep after 15 mins // install swayidle
 exec-once = swayidle -w timeout 1200 'swaylock; hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' timeout 1800 'systemctl suspend' # lock and sleep after 20 mins, suspend after 30 mins // install swayidle
 exec-once = libinput-gestures // install libinput-gestures
 exec-once = swayosd-server # enable swayosd service
 exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard input (requires to be run in a subshell)  
 
+#   _ __ _ ___  _  _ ___
+#   | | \| |--' |__|  | 
 input {
 	kb_layout = dk
     kb_options = altwin:swap_lalt_lwin, #caps:swapescape, 
@@ -23,6 +27,8 @@ device {
     accel_profile =  adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
     sensitivity = -0.0 # -1.0 - 1.0 
 }
+
+
 
 decoration {
     blur {

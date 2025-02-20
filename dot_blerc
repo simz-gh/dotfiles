@@ -15,8 +15,11 @@
 #source /path/to/bash_completion.sh
 
 
-# Set up fzf
+# Set up fzf -> https://github.com/akinomyoga/ble.sh?tab=readme-ov-file#28-fzf-integration
 ble-import -d integration/fzf-completion
 ble-import -d integration/fzf-key-bindings
 
+
+# sabbrevs -> https://github.com/akinomyoga/ble.sh?tab=readme-ov-file#34-use-sabbrev-static-abbrev-expansions
 ble-sabbrev '\L'='| less'
+ble-sabbrev "~mybin=$HOME/bin"

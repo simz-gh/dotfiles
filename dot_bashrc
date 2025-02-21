@@ -63,11 +63,6 @@ function in() {
     fi
 }
 
-# Function to remove the lock file on exit
-function cleanup() {
-    rm -f /tmp/.slow_load_warning.lock
-}
-
 # Detect AUR wrapper and cache it for faster subsequent loads
 aur_cache_file="/tmp/.aurhelper.bashrc"
 if [[ -f $aur_cache_file ]]; then

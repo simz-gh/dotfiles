@@ -26,6 +26,61 @@ bleopt edit_bell=vbell vbell_{default_message=' BEL ',duration=3000,align=right}
 # managing tools like chezmoi https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+EDITOR=micro
+
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#  ┏      •     
+#  ╋┓┏┏┓┏╋┓┏┓┏┓┏
+#  ┛┗┻┛┗┗┗┗┗┛┛┗┛
+#               
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Install packages from both Arch and AUR
+function in() {
+    local -a inPkg=("$@")
+    local -a arch=()
+    local -a aur=()
+
+    for pkg in "${inPkg[@]}"; do
+    if pacman -Si "${pkg}" &>/dev/null; then
+    arch+=("${pkg}")
+    else
+    aur+=("${pkg}")
+    fi
+    done
+
+    if [[ ${#arch[@]} -gt 0 ]]; then
+    sudo pacman -S "${arch[@]}"
+    fi
+
+    if [[ ${#aur[@]} -gt 0 ]]; then
+    ${aurhelper} -S "${aur[@]}"
+    fi
+}
+
+# Function to remove the lock file on exit
+function cleanup() {
+    rm -f /tmp/.slow_load_warning.lock
+}
+
+# Detect AUR wrapper and cache it for faster subsequent loads
+aur_cache_file="/tmp/.aurhelper.bashrc"
+if [[ -f $aur_cache_file ]]; then
+    aurhelper=$(<"$aur_cache_file")
+else
+    if pacman -Qi yay &>/dev/null; then
+        aurhelper="yay"
+    elif pacman -Qi paru &>/dev/null; then
+        aurhelper="paru"
+    fi
+    echo "$aurhelper" > "$aur_cache_file"
+fi
+
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #       ┓ 
 #  ╋┏┓┏┓┃┏

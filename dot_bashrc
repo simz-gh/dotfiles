@@ -1,3 +1,4 @@
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 #  ██████╗  █████╗ ███████╗██╗  ██╗   
 #  ██╔══██╗██╔══██╗██╔════╝██║  ██║   
 #  ██████╔╝███████║███████╗███████║   
@@ -12,12 +13,13 @@
 #   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     
 # https://patorjk.com/software/taag/ made w/ ANSI Shadow and DiamFont
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 #   ▄▄▄ ▐▌   ▗▞▀▚▖█ █ 
 #  ▀▄▄  ▐▌   ▐▛▀▀▘█ █ 
 #  ▄▄▄▀ ▐▛▀▚▖▝▚▄▄▖█ █ 
 #       ▐▌ ▐▌     █ █ 
 
-# adding some functionality akin to zsh -> https://github.com/akinomyoga/ble.sh/wiki
+# zsh features for bash -> https://github.com/akinomyoga/ble.sh/wiki
 [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 # completions
@@ -25,10 +27,7 @@ if [ ~/.local/share/chezmoi/completion/chezmoi-completion.bash ]; then
 	. ~/.local/share/chezmoi/completion/chezmoi-completion.bash
 fi
 
-# https://github.com/akinomyoga/ble.sh?tab=readme-ov-file#25-bell
-bleopt edit_bell=vbell vbell_{default_message=' BEL ',duration=3000,align=right}
-
-# managing tools like chezmoi https://asdf-vm.com/guide/getting-started.html
+# managing environments -> https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 EDITOR=micro
@@ -115,9 +114,9 @@ source ~/.local/share/chezmoi/completion/chezmoi-completion.bash
 
 fastfetch -c $HOME/.config/fastfetch/config.jsonc
 
-eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
 # eval $(thefuck --alias FUCK)
+eval $(thefuck --alias)
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

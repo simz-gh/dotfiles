@@ -101,7 +101,7 @@ fi
 #  └─┘└─┘┴ ┴┴  ┴─┘└─┘ ┴ ┴└─┘┘└┘└─┘
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-source ~/.local/chezmoi/completion/chezmoi-completion.bash
+source ~/.local/share/chezmoi/completion/chezmoi-completion.bash
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #  ┌┬┐┌─┐┌─┐┬  ┌─┐

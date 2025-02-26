@@ -1,10 +1,10 @@
 [shlvl]
 disabled = false
 threshold = 1
-symbol = "󱗃"
+symbol = "󱗃 "
 
 [character]
-symbol = "➜"
+symbol = "~"
 success_symbol = "[✔](bold green)"
 error_symbol = "[✗](bold red)"
 

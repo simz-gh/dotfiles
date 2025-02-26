@@ -28,7 +28,7 @@ if [ ~/.local/share/chezmoi/completion/chezmoi-completion.bash ]; then
 fi
 
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
-[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+[[ $- = *i* ]] && source /usr/bin/liquidprompt
 
 # managing environments -> https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"

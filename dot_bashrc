@@ -57,7 +57,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 #  └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘└─┘
 
 # Install packages from both Arch and AUR
-in() 
+function in() 
 {
     local -a inPkg=("$@")
     local -a arch=()

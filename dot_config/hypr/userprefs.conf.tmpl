@@ -97,32 +97,42 @@ envd = QT_CURSOR_SIZE,20
 #     sensitivity = -0.0 # -1.0 - 1.0 
 # }
 
+device {
+    name = razer-razer-deathadder-v3-pro
+    accel_profile = adaptive  
+    sensitivity = -0.0 # -1.0 - 1.0 
+}
+
 # device {
-#     name = razer-razer-deathadder-v3-pro
-#     accel_profile = adaptive  
-#     sensitivity = -0.0 # -1.0 - 1.0 
+#     name = asustek-rog-strix-scope-ii-96-wireless
+#     kb_layout = dk
+#     kb_options = altwin:swap_lalt_lwin #caps:swapescape
+#     repeat_delay = 300 
 # }
 
 device {
-    name = pulsar-xlite-v3-1
-    accel_profile = flat 
-    sensitivity = -1.0 # -1.0 - 1.0 
-}
-
-device {
-    name = asustek-rog-strix-scope-ii-96-wireless
+    name = keychron-keychron-v1-max
     kb_layout = dk
-    kb_options = altwin:swap_lalt_lwin #caps:swapescape
+    kb_options = altwin:swap_lalt_lwin caps:swapescape
     repeat_delay = 300 
     enabled = true
 }
 
 device {
-    name = ^(keychron-keychron-v1-max|keychron-link--keyboard)$
+    name = keychron--keychron-link--keyboard
     kb_layout = dk
-    kb_options = altwin:swap_lalt_lwin #caps:swapescape
+    kb_options = altwin:swap_lalt_lwin caps:swapescape
     repeat_delay = 300 
-    enabled = true
+}
+
+device {
+    name = razer-razer-deathadder-v3-pro-keyboard
+    enabled = false
+}
+
+device {
+    name = razer-razer-deathadder-v3-pro-1
+    enabled = false
 }
 
 # ╻  ┏━┓╻ ╻┏━┓╻ ╻╺┳╸┏━┓
@@ -150,8 +160,6 @@ decoration {
     blur {
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         enabled = yes
-        # size = 8
-        # passes = 2 # default 3 -> Increasing blur:passes is necessary to prevent blur looking wrong on higher blur:size values, but remember that higher blur:passes will require more strain on the GPU.
         special = yes
         # ignore_opacity = off
     }

@@ -1,33 +1,49 @@
-#   ▄▄▄       ██▓     ██▓ ▄▄▄        ██████ ▓█████   ██████     ▄▄▄▄ ▓██   ██▓     ██████ 
-#  ▒████▄    ▓██▒    ▓██▒▒████▄    ▒██    ▒ ▓█   ▀ ▒██    ▒    ▓█████▄▒██  ██▒   ▒██    ▒ 
-#  ▒██  ▀█▄  ▒██░    ▒██▒▒██  ▀█▄  ░ ▓██▄   ▒███   ░ ▓██▄      ▒██▒ ▄██▒██ ██░   ░ ▓██▄   
-#  ░██▄▄▄▄██ ▒██░    ░██░░██▄▄▄▄██   ▒   ██▒▒▓█  ▄   ▒   ██▒   ▒██░█▀  ░ ▐██▓░     ▒   ██▒
-#   ▓█   ▓██▒░██████▒░██░ ▓█   ▓██▒▒██████▒▒░▒████▒▒██████▒▒   ░▓█  ▀█▓░ ██▒▓░   ▒██████▒▒
-#   ▒▒   ▓▒█░░ ▒░▓  ░░▓   ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░░░ ▒░ ░▒ ▒▓▒ ▒ ░   ░▒▓███▀▒ ██▒▒▒    ▒ ▒▓▒ ▒ ░
-#    ▒   ▒▒ ░░ ░ ▒  ░ ▒ ░  ▒   ▒▒ ░░ ░▒  ░ ░ ░ ░  ░░ ░▒  ░ ░   ▒░▒   ░▓██ ░▒░    ░ ░▒  ░ ░
-#    ░   ▒     ░ ░    ▒ ░  ░   ▒   ░  ░  ░     ░   ░  ░  ░      ░    ░▒ ▒ ░░     ░  ░  ░  
-#        ░  ░    ░  ░ ░        ░  ░      ░     ░  ░      ░      ░     ░ ░              ░  
-#                         
-# 2025
+#   █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗ 
+#  ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝ 
+#  ███████║██║     ██║███████║███████╗█████╗  ███████╗ 
+#  ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║ 
+#  ██║  ██║███████╗██║██║  ██║███████║███████╗███████║ 
+#  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ 
+#                                                      
+#      ██╗███████╗    ██████╗  ██████╗ ██████╗ ███████╗
+#     ██╔╝██╔════╝    ╚════██╗██╔═████╗╚════██╗██╔════╝
+#    ██╔╝ ███████╗     █████╔╝██║██╔██║ █████╔╝███████╗
+#   ██╔╝  ╚════██║    ██╔═══╝ ████╔╝██║██╔═══╝ ╚════██║
+#  ██╔╝   ███████║    ███████╗╚██████╔╝███████╗███████║
+#  ╚═╝    ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝╚══════╝
+# https://patorjk.com/software/taag/ made w/ ANSI Shadow and Calvin S
+# managed by chezmoi
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-# directory navigation shortcuts
+#  ┌┐┌┌─┐┬  ┬┬┌─┐┌─┐┌┬┐┬┌─┐┌┐┌  ┌┬┐┬ ┬┌─┐┌─┐┬┌─┌─┐
+#  │││├─┤└┐┌┘││ ┬├─┤ │ ││ ││││   │ │││├┤ ├─┤├┴┐└─┐
+#  ┘└┘┴ ┴ └┘ ┴└─┘┴ ┴ ┴ ┴└─┘┘└┘   ┴ └┴┘└─┘┴ ┴┴ ┴└─┘
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# external tools
+#  ┌┬┐┬ ┬┬┬─┐┌┬┐  ┌─┐┌─┐┬─┐┌┬┐┬ ┬  ┌┬┐┌─┐┌─┐┬  ┌─┐
+#   │ ├─┤│├┬┘ ││  ├─┘├─┤├┬┘ │ └┬┘   │ │ ││ ││  └─┐
+#   ┴ ┴ ┴┴┴└──┴┘  ┴  ┴ ┴┴└─ ┴  ┴    ┴ └─┘└─┘┴─┘└─┘
+
 alias adsf='asdf'
 alias cat='lolcat'
 alias cm='chezmoi'
 alias cme='chezmoi edit'
+alias cmu='chezmoi update'
 alias f='fuck'
 alias l='eza -lh --icons=auto' # long list
 alias ls='eza -1 --icons=auto' # short list
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as treerep
+
+#  ┌┐ ┬ ┬┬┬ ┌┬┐  ┬┌┐┌  ┌┬┐┌─┐┌─┐┬  ┌─┐
+#  ├┴┐│ │││  │───││││   │ │ ││ ││  └─┐
+#  └─┘└─┘┴┴─┘┴   ┴┘└┘   ┴ └─┘└─┘┴─┘└─┘
  
 # get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -39,8 +55,8 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | l
 alias mkdir='mkdir -p'
 
 # package helper depends on function in env
-alias uni='$aurhelper -Rns' # uninstall package
+alias un='$aurhelper -Rns' # uninstall package
 alias lpa='$aurhelper -Qs|lolcat' # list installed package
 alias lap='$aurhelper -Ss|lolcat' # list available package
-alias pca='$aurhelper -Sc' # remove unused cache
-alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias pca='$aurhelper -Sc' # purge unused cache
+alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # purge unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -

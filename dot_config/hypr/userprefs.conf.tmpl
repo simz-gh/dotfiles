@@ -1,22 +1,43 @@
-{{ if eq .chezmoi.hostname "s-lt" -}}
-#          _______  _____  _______  _____   _____       _______  _____  __   _ _______ _____  ______
-#   |      |_____| |_____]    |    |     | |_____]      |       |     | | \  | |______   |   |  ____
-#   |_____ |     | |          |    |_____| |            |_____  |_____| |  \_| |       __|__ |_____|
-#                                                                                                                 
-# https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#use-completely-different-dotfiles-on-different-machines
-# https://patorjk.com/software/taag/#p=display&c=bash&f=Cybersmall&t=Input
+#  ██╗      █████╗ ██████╗ ████████╗ ██████╗ ██████╗   
+#  ██║     ██╔══██╗██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗  
+#  ██║     ███████║██████╔╝   ██║   ██║   ██║██████╔╝  
+#  ██║     ██╔══██║██╔═══╝    ██║   ██║   ██║██╔═══╝   
+#  ███████╗██║  ██║██║        ██║   ╚██████╔╝██║       
+#  ╚══════╝╚═╝  ╚═╝╚═╝        ╚═╝    ╚═════╝ ╚═╝       
+#                                                      
+#   ██████╗ ██████╗ ███╗   ██╗███████╗                 
+#  ██╔════╝██╔═══██╗████╗  ██║██╔════╝                 
+#  ██║     ██║   ██║██╔██╗ ██║█████╗                   
+#  ██║     ██║   ██║██║╚██╗██║██╔══╝                   
+#  ╚██████╗╚██████╔╝██║ ╚████║██║                      
+#   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝                      
+#                                                      
+#      ██╗███████╗    ██████╗  ██████╗ ██████╗ ███████╗
+#     ██╔╝██╔════╝    ╚════██╗██╔═████╗╚════██╗██╔════╝
+#    ██╔╝ ███████╗     █████╔╝██║██╔██║ █████╔╝███████╗
+#   ██╔╝  ╚════██║    ██╔═══╝ ████╔╝██║██╔═══╝ ╚════██║
+#  ██╔╝   ███████║    ███████╗╚██████╔╝███████╗███████║
+#  ╚═╝    ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝╚══════╝     
+# https://patorjk.com/software/taag/ made w/ ANSI Shadow and Calvin S
+# managed by chezmoi
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+{{ if eq .chezmoi.hostname "s-lt" -}}                                                                             
 
-#   _    ____ _  _ __ _ ____ _  _
-#   |___ |--| |__| | \| |___ |--|
+#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬
+#  │  ├─┤│ │││││  ├─┤
+#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴
+
 exec-once = swayidle -w timeout 600 'swaylock' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' # lock after 10 mins, sleep after 15 mins // install swayidle
 exec-once = swayidle -w timeout 1200 'swaylock; hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' timeout 1800 'systemctl suspend' # lock and sleep after 20 mins, suspend after 30 mins // install swayidle
 exec-once = libinput-gestures // install libinput-gestures
 exec-once = swayosd-server # enable swayosd service
 exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard input (requires to be run in a subshell)  
 
-#   _ __ _ ___  _  _ ___
-#   | | \| |--' |__|  | 
+#  ┬┌┐┌┌─┐┬ ┬┌┬┐
+#  ││││├─┘│ │ │ 
+#  ┴┘└┘┴  └─┘ ┴  
+
 input {
 	kb_layout = dk
     kb_options = altwin:swap_lalt_lwin, #caps:swapescape, 
@@ -28,7 +49,9 @@ device {
     sensitivity = -0.0 # -1.0 - 1.0 
 }
 
-
+#  ┬  ┌─┐┬ ┬┌─┐┬ ┬┌┬┐
+#  │  ├─┤└┬┘│ ││ │ │ 
+#  ┴─┘┴ ┴ ┴ └─┘└─┘ ┴ 
 
 decoration {
     blur {
@@ -44,6 +67,10 @@ decoration {
 dwindle {
     special_scale_factor = 0.95
 }
+
+#  ┌┬┐┬┌─┐┌─┐┬  ┌─┐┬ ┬
+#   │││└─┐├─┘│  ├─┤└┬┘
+#  ─┴┘┴└─┘┴  ┴─┘┴ ┴ ┴ 
 
 misc {
     vrr = 2
@@ -65,19 +92,24 @@ experimental {
     wide_color_gamut = yes
 }
 
+#  ██████╗ ███████╗███████╗██╗  ██╗████████╗ ██████╗ ██████╗      ██████╗ ██████╗ ███╗   ██╗███████╗
+#  ██╔══██╗██╔════╝██╔════╝██║ ██╔╝╚══██╔══╝██╔═══██╗██╔══██╗    ██╔════╝██╔═══██╗████╗  ██║██╔════╝
+#  ██║  ██║█████╗  ███████╗█████╔╝    ██║   ██║   ██║██████╔╝    ██║     ██║   ██║██╔██╗ ██║█████╗  
+#  ██║  ██║██╔══╝  ╚════██║██╔═██╗    ██║   ██║   ██║██╔═══╝     ██║     ██║   ██║██║╚██╗██║██╔══╝  
+#  ██████╔╝███████╗███████║██║  ██╗   ██║   ╚██████╔╝██║         ╚██████╗╚██████╔╝██║ ╚████║██║     
+#  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝          ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     
+
 {{ else if eq .chezmoi.hostname "s-dt" -}}
-# desktop configuration
 
-# ╻  ┏━┓╻ ╻┏┓╻┏━╸╻ ╻
-# ┃  ┣━┫┃ ┃┃┗┫┃  ┣━┫
-# ┗━╸╹ ╹┗━┛╹ ╹┗━╸╹ ╹
+#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬
+#  │  ├─┤│ │││││  ├─┤
+#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴
 
-# https://wiki.archlinux.org/title/Hyprland#Turning_off_the_screen_using_DPMS_after_a_timeout_period
 exec-once = ~/.config/hypr/scripts/sleep.sh
 
-# ┏━╸┏┓╻╻ ╻
-# ┣╸ ┃┗┫┃┏┛
-# ┗━╸╹ ╹┗┛
+#  ┌─┐┌┐┌┬  ┬┬┬─┐┌─┐┌┐┌┌┬┐┌─┐┌┐┌┌┬┐
+#  ├┤ │││└┐┌┘│├┬┘│ │││││││├┤ │││ │ 
+#  └─┘┘└┘ └┘ ┴┴└─└─┘┘└┘┴ ┴└─┘┘└┘ ┴ 
 
 env = __GL_GSYNC_ALLOWED,1
 
@@ -86,10 +118,16 @@ envd = XCURSOR_SIZE,20
 envd = QT_CURSOR_SIZE,20
 
 
-# ╻┏┓╻┏━┓╻ ╻╺┳╸
-# ┃┃┗┫┣━┛┃ ┃ ┃
-# ╹╹ ╹╹  ┗━┛ ╹
-# https://wiki.hyprland.org/Configuring/Variables/#input
+#  ┬┌┐┌┌─┐┬ ┬┌┬┐
+#  ││││├─┘│ │ │ 
+#  ┴┘└┘┴  └─┘ ┴  
+
+# mice
+device {
+    name = razer-razer-deathadder-v3-pro
+    accel_profile = adaptive  
+    sensitivity = -0.0 # -1.0 - 1.0 
+}
 
 # device {
 #     name = asustek-rog-giii-wireless-aimpoint
@@ -97,12 +135,8 @@ envd = QT_CURSOR_SIZE,20
 #     sensitivity = -0.0 # -1.0 - 1.0 
 # }
 
-device {
-    name = razer-razer-deathadder-v3-pro
-    accel_profile = adaptive  
-    sensitivity = -0.0 # -1.0 - 1.0 
-}
 
+# keebs 
 # device {
 #     name = asustek-rog-strix-scope-ii-96-wireless
 #     kb_layout = dk
@@ -111,7 +145,7 @@ device {
 # }
 
 device {
-    name = keychron-keychron-v1-max
+    name = keychron-keychron-v1-max # wired
     kb_layout = dk
     kb_options = altwin:swap_lalt_lwin
     repeat_delay = 300 
@@ -119,13 +153,14 @@ device {
 }
 
 device {
-    name = keychron--keychron-link--keyboard
+    name = keychron--keychron-link--keyboard # wireless
     kb_layout = dk
     kb_options = altwin:swap_lalt_lwin
     repeat_delay = 300
     enabled = true
 }
 
+# rogue devices should be disabled
 device {
     name = razer-razer-deathadder-v3-pro-keyboard
     enabled = false
@@ -136,10 +171,9 @@ device {
     enabled = false
 }
 
-# ╻  ┏━┓╻ ╻┏━┓╻ ╻╺┳╸┏━┓
-# ┃  ┣━┫┗┳┛┃ ┃┃ ┃ ┃ ┗━┓
-# ┗━╸╹ ╹ ╹ ┗━┛┗━┛ ╹ ┗━┛
-# https://wiki.hyprland.org/Configuring/Master-Layout/
+#  ┬  ┌─┐┬ ┬┌─┐┬ ┬┌┬┐
+#  │  ├─┤└┬┘│ ││ │ │ 
+#  ┴─┘┴ ┴ ┴ └─┘└─┘ ┴ 
 
 general {
     layout = master
@@ -159,29 +193,24 @@ master {
 
 decoration {
     blur {
-        # https://wiki.hyprland.org/Configuring/Variables/#blur
         enabled = yes
         special = yes
         # ignore_opacity = off
     }
 }
 
-# ┏┳┓╻┏━┓┏━╸
-# ┃┃┃┃┗━┓┃
-# ╹ ╹╹┗━┛┗━╸
-# See https://wiki.hyprland.org/Configuring/Variables/#misc
+#  ┌┬┐┬┌─┐┌─┐┬  ┌─┐┬ ┬
+#   │││└─┐├─┘│  ├─┤└┬┘
+#  ─┴┘┴└─┘┴  ┴─┘┴ ┴ ┴ 
 
 misc {
     vrr = 2
 }
 
-# RENDER
-# https://wiki.hyprland.org/Configuring/Variables/#render
 render {
 	direct_scanout = yes
 }
 
-# Cursor
 cursor {
     no_break_fs_vrr = yes
     min_refresh_rate = 120

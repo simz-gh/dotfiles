@@ -6,7 +6,6 @@
 #  ╚═╝    ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝╚══════╝     
 # https://patorjk.com/software/taag/ made w/ ANSI Shadow and Calvin S
 # managed by chezmoi
-#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 {{ if eq .chezmoi.hostname "s-lt" -}}                                                                             
 
@@ -176,7 +175,7 @@ device {
 #  ┴─┘┴ ┴ ┴ └─┘└─┘ ┴ 
 
 general {
-    layout = master
+    layout = dwindle
 }
 
 master {
@@ -188,7 +187,7 @@ master {
     inherit_fullscreen = no
     # always_center_master = no
     slave_count_for_center_master = 0
-    smart_resizing = yes
+    smart_resizing = no
 }
 
 decoration {

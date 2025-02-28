@@ -40,14 +40,13 @@ exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard inp
 #  ┴┘└┘┴  └─┘ ┴  
 
 input {
-	kb_layout = dk
-    kb_options = altwin:swap_lalt_lwin,caps:swapescape
+	  kb_layout = dk
+    kb_options = altwin:swap_lalt_lwin
 }
 
 device {
-    name = asustek-rog-giii-wireless-aimpoint
-    accel_profile =  adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
-    sensitivity = -0.0 # -1.0 - 1.0 
+    name = at-translated-set-2-keyboard
+    kb_options = caps:swapescape
 }
 
 #  ┬  ┌─┐┬ ┬┌─┐┬ ┬┌┬┐
@@ -95,6 +94,8 @@ experimental {
 
 {{ else if eq .chezmoi.hostname "s-dt" -}}
 
+// TODO - needs to be split into separate files so theyre not opened and edited in confusion
+
 #  ██████╗ ███████╗███████╗██╗  ██╗████████╗ ██████╗ ██████╗      ██████╗ ██████╗ ███╗   ██╗███████╗
 #  ██╔══██╗██╔════╝██╔════╝██║ ██╔╝╚══██╔══╝██╔═══██╗██╔══██╗    ██╔════╝██╔═══██╗████╗  ██║██╔════╝
 #  ██║  ██║█████╗  ███████╗█████╔╝    ██║   ██║   ██║██████╔╝    ██║     ██║   ██║██╔██╗ ██║█████╗  
@@ -122,34 +123,17 @@ envd = QT_CURSOR_SIZE,20
 #  ││││├─┘│ │ │ 
 #  ┴┘└┘┴  └─┘ ┴  
 
-# mice
 device {
     name = razer-razer-deathadder-v3-pro
     accel_profile = adaptive  
-    sensitivity = -0.0 # -1.0 - 1.0 
+    sensitivity = -0.0
 }
-
-# device {
-#     name = asustek-rog-giii-wireless-aimpoint
-#     accel_profile = adaptive # flat --> https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
-#     sensitivity = -0.0 # -1.0 - 1.0 
-# }
-
-
-# keebs 
-# device {
-#     name = asustek-rog-strix-scope-ii-96-wireless
-#     kb_layout = dk
-#     kb_options = altwin:swap_lalt_lwin #caps:swapescape
-#     repeat_delay = 300 
-# }
 
 device {
     name = keychron-keychron-v1-max # wired
     kb_layout = dk
     kb_options = altwin:swap_lalt_lwin, caps:swapescape
     repeat_delay = 300 
-    enabled = true
 }
 
 device {
@@ -158,17 +142,6 @@ device {
     kb_options = altwin:swap_lalt_lwin, caps:swapescape
     repeat_delay = 300
     enabled = true
-}
-
-# rogue devices should be disabled
-device {
-    name = razer-razer-deathadder-v3-pro-keyboard
-    enabled = false
-}
-
-device {
-    name = razer-razer-deathadder-v3-pro-1
-    enabled = false
 }
 
 #  ┬  ┌─┐┬ ┬┌─┐┬ ┬┌┬┐
@@ -186,7 +159,6 @@ master {
     mfact = 0.45
     orientation = center
     inherit_fullscreen = no
-    # always_center_master = no
     slave_count_for_center_master = 0
     smart_resizing = no
 }

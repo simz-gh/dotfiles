@@ -41,12 +41,11 @@ exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard inp
 
 input {
 	  kb_layout = dk
-    kb_options = altwin:swap_lalt_lwin
 }
 
 device {
     name = at-translated-set-2-keyboard
-    kb_options = caps:swapescape
+    kb_options = caps:swapescape, altwin:swap_lalt_lwin
 }
 
 #  ┬  ┌─┐┬ ┬┌─┐┬ ┬┌┬┐
@@ -80,7 +79,6 @@ render {
     direct_scanout = no
 }
 
-# Cursor
 cursor {
     no_break_fs_vrr = yes
     min_refresh_rate = 60
@@ -159,6 +157,7 @@ master {
     mfact = 0.45
     orientation = center
     inherit_fullscreen = no
+    # always_center_master = no
     slave_count_for_center_master = 0
     smart_resizing = no
 }

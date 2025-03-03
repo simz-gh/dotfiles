@@ -31,13 +31,13 @@ alias .5='cd ../../../../..'
 #   ┴ ┴ ┴┴┴└──┴┘  ┴  ┴ ┴┴└─ ┴  ┴    ┴ └─┘└─┘┴─┘└─┘
 
 alias adsf='asdf'
-alias cat='lolcat'
-alias cm='chezmoi'
-alias cme='chezmoi edit'
-alias cmu='chezmoi update'
+alias ct='lolcat'
+alias c='chezmoi'
+alias ce='chezmoi edit'
+alias cu='chezmoi update'
 alias f='fuck'
-alias hpd='hyprctl devices'
-alias hpr='hyprctl reload'
+alias hd='hyprctl devices'
+alias hr='hyprctl reload'
 alias l='eza -lh --icons=auto' # long list
 alias ls='eza -1 --icons=auto' # short list
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
@@ -49,7 +49,7 @@ alias lt='eza --icons=auto --tree' # list folder as treerep
 #  └─┘└─┘┴┴─┘┴   ┴┘└┘   ┴ └─┘└─┘┴─┘└─┘
  
 # get the error messages from journalctl
-alias jctl="journalctl -p 3 -xb"
+alias je="journalctl -p 3 -xb"
 
 # recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | lolcat"
@@ -58,8 +58,9 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | l
 alias mkdir='mkdir -p'
 
 # package helper depends on function in env
-alias un='$aurhelper -Rns' # uninstall package
 alias lpa='$aurhelper -Qs|lolcat' # list installed package
 alias lap='$aurhelper -Ss|lolcat' # list available package
 alias pca='$aurhelper -Sc' # purge unused cache
-alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # purge unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # purge unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
+alias s='$aurhelper -S'
+alias un='$aurhelper -Rns' # uninstall package

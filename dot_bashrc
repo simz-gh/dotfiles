@@ -38,7 +38,9 @@ fi
 # managing environments -> https://asdf-vm.com/guide/getting-started.html
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-EDITOR=micro
+# changings defaults and shit
+export EDITOR=nvim
+export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
 #  ┌┬┐┬┬─┐┌─┐┌─┐┌┬┐┌─┐┬─┐┬┌─┐┌─┐
 #   │││├┬┘├┤ │   │ │ │├┬┘│├┤ └─┐

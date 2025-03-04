@@ -8,13 +8,13 @@
 # https://patorjk.com/software/taag/ made w/ ANSI Shadow and Calvin S
 # managed by chezmoi
 
-#   █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗ 
-#  ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝ 
-#  ███████║██║     ██║███████║███████╗█████╗  ███████╗ 
-#  ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║ 
-#  ██║  ██║███████╗██║██║  ██║███████║███████╗███████║ 
-#  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ 
-#                                                      
+#   █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
+#  ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+#  ███████║██║     ██║███████║███████╗█████╗  ███████╗
+#  ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║
+#  ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
+#  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+#
 
 #  ┌┐┌┌─┐┬  ┬┬┌─┐┌─┐┌┬┐┬┌─┐┌┐┌  ┌┬┐┬ ┬┌─┐┌─┐┬┌─┌─┐
 #  │││├─┤└┐┌┘││ ┬├─┤ │ ││ ││││   │ │││├┤ ├─┤├┴┐└─┐
@@ -38,16 +38,16 @@ alias cu='chezmoi update'
 alias f='fuck'
 alias hd='hyprctl devices'
 alias hr='hyprctl reload'
-alias l='eza -lh --icons=auto' # long list
-alias ls='eza -1 --icons=auto' # short list
+alias l='eza -lh --icons=auto'                                         # long list
+alias ls='eza -1 --icons=auto'                                         # short list
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree' # list folder as treerep
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as treerep
 
 #  ┌┐ ┬ ┬┬┬ ┌┬┐  ┬┌┐┌  ┌┬┐┌─┐┌─┐┬  ┌─┐
 #  ├┴┐│ │││  │───││││   │ │ ││ ││  └─┐
 #  └─┘└─┘┴┴─┘┴   ┴┘└┘   ┴ └─┘└─┘┴─┘└─┘
- 
+
 # get the error messages from journalctl
 alias je="journalctl -p 3 -xb"
 
@@ -58,11 +58,11 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | l
 alias mkdir='mkdir -p'
 
 # package helper depends on function in env
-alias lpa='$aurhelper -Qs|lolcat' # list installed package
-alias lap='$aurhelper -Ss|lolcat' # list available package
-alias pca='$aurhelper -Sc' # purge unused cache
-alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # purge unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
-alias s='$aurhelper -S'
-alias u='$aurhelper'
-alias un='$aurhelper -Rns' # uninstall package
-
+alias ap='$aurhelper -Qs|lolcat'                # list installed package
+alias avp='$aurhelper -Ss|lolcat'               # list available package
+alias cc='$aurhelper -Sc'                       # clean unused cache
+alias co='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
+alias fa='$aurhelper -Qe|grep -E'               # list installed package and grep for app
+alias s='$aurhelper -S'                         # install
+alias u='$aurhelper'                            # update
+alias un='$aurhelper -Rns'                      # uninstall package

@@ -63,4 +63,6 @@ alias lap='$aurhelper -Ss|lolcat' # list available package
 alias pca='$aurhelper -Sc' # purge unused cache
 alias por='$aurhelper -Qtdq | $aurhelper -Rns -' # purge unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
 alias s='$aurhelper -S'
+alias u='$aurhelper'
 alias un='$aurhelper -Rns' # uninstall package
+

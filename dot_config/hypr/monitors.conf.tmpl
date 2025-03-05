@@ -2,7 +2,7 @@
 # https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#use-completely-different-dotfiles-on-different-machines
 {{ if eq .chezmoi.hostname "s-lt" -}}
 # lt monitor configuration
-monitor =,preferred,auto,1.67
+monitor =,preferred,auto,1.67,bitdepth,10
 
 
 {{ else if eq .chezmoi.hostname "s-dt" -}}

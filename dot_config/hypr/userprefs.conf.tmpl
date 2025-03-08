@@ -40,17 +40,17 @@ exec-once = `pkexec swayosd-libinput-backend` # swayosd service for keyboard inp
 #  ┴┘└┘┴  └─┘ ┴  
 
 input {
-	  kb_layout = dk
+  # kb_layout = dk
 }
 
 device {
     name = at-translated-set-2-keyboard
     kb_options = caps:swapescape, altwin:swap_lalt_lwin
+    kb_layout = dk
 }
 
 device {
     name = beekeeb-piantor-keyboard # wired
-    kb_layout = gb
     repeat_delay = 300
     enabled = true
 }

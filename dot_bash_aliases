@@ -26,28 +26,33 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
 #  ┌┬┐┬ ┬┬┬─┐┌┬┐  ┌─┐┌─┐┬─┐┌┬┐┬ ┬  ┌┬┐┌─┐┌─┐┬  ┌─┐
 #   │ ├─┤│├┬┘ ││  ├─┘├─┤├┬┘ │ └┬┘   │ │ ││ ││  └─┐
 #   ┴ ┴ ┴┴┴└──┴┘  ┴  ┴ ┴┴└─ ┴  ┴    ┴ └─┘└─┘┴─┘└─┘
 
 alias adsf='asdf'
+
 alias ct='lolcat'
+
 alias c='chezmoi'
 alias ce='chezmoi edit'
 alias ceh='chezmoi edit .config/hypr/userprefs.conf'
 alias cu='chezmoi update'
-alias f='fuck'
-alias hd='hyprctl devices'
-alias hr='hyprctl reload'
+alias cgp='chezmoi git pull'
+
 alias l='eza -lh --icons=auto'                                         # long list
 alias ls='eza -1 --icons=auto'                                         # short list
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
 alias ld='eza -lhD --icons=auto'                                       # long list dirs
 alias lt='eza --icons=auto --tree'                                     # list folder as treerep
 
-#  ┌┐ ┬ ┬┬┬ ┌┬┐  ┬┌┐┌  ┌┬┐┌─┐┌─┐┬  ┌─┐
-#  ├┴┐│ │││  │───││││   │ │ ││ ││  └─┐
-#  └─┘└─┘┴┴─┘┴   ┴┘└┘   ┴ └─┘└─┘┴─┘└─┘
+alias f='fuck'
+
+alias hd='hyprctl devices'
+alias hr='hyprctl reload'
 
 # get the error messages from journalctl
 alias je="journalctl -p 3 -xb"
@@ -55,15 +60,12 @@ alias je="journalctl -p 3 -xb"
 # recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | lolcat"
 
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
-
 # package helper depends on function in env
 alias ap='$aurhelper -Qs|lolcat'                # list installed package
 alias avp='$aurhelper -Ss|lolcat'               # list available package
 alias cc='$aurhelper -Sc'                       # clean unused cache
 alias co='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
-alias fa='$aurhelper -Qe|grep -E'               # list installed package and grep for app
-alias s='$aurhelper -S'                         # install
+alias fia='$aurhelper -Qe|grep -E'              # check if package is installed.
+alias s='packseek'                              # install
 alias u='$aurhelper'                            # update
 alias un='$aurhelper -Rns'                      # uninstall package

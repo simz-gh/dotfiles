@@ -66,6 +66,6 @@ alias avp='$aurhelper -Ss|lolcat'               # list available package
 alias cc='$aurhelper -Sc'                       # clean unused cache
 alias co='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
 alias fia='$aurhelper -Qe|grep -E'              # check if package is installed.
-alias s='packseek'                              # install
+alias s='pacseek'                               # install
 alias u='$aurhelper'                            # update
 alias un='$aurhelper -Rns'                      # uninstall package

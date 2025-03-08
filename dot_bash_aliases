@@ -39,7 +39,8 @@ alias ct='lolcat'
 
 alias c='chezmoi'
 alias ce='chezmoi edit'
-alias ceh='chezmoi edit .config/hypr/userprefs.conf'
+alias ca='chezmoi edit .bash-aliases'
+alias cep='chezmoi edit .config/hypr/userprefs.conf'
 alias cu='chezmoi update'
 alias cgp='chezmoi git pull'
 
@@ -48,8 +49,6 @@ alias ls='eza -1 --icons=auto'                                         # short l
 alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
 alias ld='eza -lhD --icons=auto'                                       # long list dirs
 alias lt='eza --icons=auto --tree'                                     # list folder as treerep
-
-alias f='fuck'
 
 alias hd='hyprctl devices'
 alias hr='hyprctl reload'

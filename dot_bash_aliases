@@ -48,6 +48,7 @@ alias 'adsf'='asdf'
 alias 'ct'='lolcat'
 
 alias 'c'='chezmoi'
+alias 'cdi'='chezmoi diff'
 alias 'ce'='chezmoi edit'
 alias 'cea'='chezmoi edit .bash-aliases'
 alias 'ceh'='chezmoi edit .config/hypr/userprefs.conf'

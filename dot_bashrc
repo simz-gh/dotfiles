@@ -32,7 +32,7 @@
 
 # completions
 if [ ~/.local/share/chezmoi/completion/chezmoi-completion.bash ]; then
-  . ~/.local/share/chezmoi/completion/chezmoi-completion.bash
+	. ~/.local/share/chezmoi/completion/chezmoi-completion.bash
 fi
 
 # managing environments -> https://asdf-vm.com/guide/getting-started.html
@@ -57,50 +57,60 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 # Install packages from both Arch and AUR
 function in() {
-  local -a inPkg=("$@")
-  local -a arch=()
-  local -a aur=()
+	local -a inPkg=("$@")
+	local -a arch=()
+	local -a aur=()
 
-  for pkg in "${inPkg[@]}"; do
-    if pacman -Si "${pkg}" &>/dev/null; then
-      arch+=("${pkg}")
-    else
-      aur+=("${pkg}")
-    fi
-  done
+	for pkg in "${inPkg[@]}"; do
+		if pacman -Si "${pkg}" &>/dev/null; then
+			arch+=("${pkg}")
+		else
+			aur+=("${pkg}")
+		fi
+	done
 
-  if [[ ${#arch[@]} -gt 0 ]]; then
-    sudo pacman -S "${arch[@]}"
-  fi
+	if [[ ${#arch[@]} -gt 0 ]]; then
+		sudo pacman -S "${arch[@]}"
+	fi
 
-  if [[ ${#aur[@]} -gt 0 ]]; then
-    ${aurhelper} -S "${aur[@]}"
-  fi
+	if [[ ${#aur[@]} -gt 0 ]]; then
+		${aurhelper} -S "${aur[@]}"
+	fi
 }
 
 # Detect AUR wrapper and cache it for faster subsequent loads
 aur_cache_file="/tmp/.aurhelper.bashrc"
 if [[ -f $aur_cache_file ]]; then
-  aurhelper=$(<"$aur_cache_file")
+	aurhelper=$(<"$aur_cache_file")
 else
-  if pacman -Qi yay &>/dev/null; then
-    aurhelper="yay"
-  elif pacman -Qi paru &>/dev/null; then
-    aurhelper="paru"
-  fi
-  echo "$aurhelper" >"$aur_cache_file"
+	if pacman -Qi yay &>/dev/null; then
+		aurhelper="yay"
+	elif pacman -Qi paru &>/dev/null; then
+		aurhelper="paru"
+	fi
+	echo "$aurhelper" >"$aur_cache_file"
 fi
 
 # lazygit -> https://github.com/jesseduffield/lazygit?tab=readme-ov-file#keybindings
 lg() {
-  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+	export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
-  lazygit "$@"
+	lazygit "$@"
 
-  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-    cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-    rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
-  fi
+	if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+		cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+		rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+	fi
+}
+
+c() {
+	if [ "$1" = "st" ]; then
+		shift
+
+		chezmoi status "$@"
+	else
+		chezmoi "$@"
+	fi
 }
 
 #  ┌─┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┬┌─┐┌┐┌
@@ -126,7 +136,7 @@ eval "$(starship init bash)"
 #  └─┘┴ └─ ┴ ┴└─┴ ┴  └─┘└─┘┘└┘└
 
 if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 #  ┌─┐┌┐┌┌┬┐

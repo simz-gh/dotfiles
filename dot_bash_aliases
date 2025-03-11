@@ -15,48 +15,50 @@
 # managed by chezmoi
 
 # easy level nav
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '.3'='cd ../../..'
+alias '.4'='cd ../../../..'
+alias '.5'='cd ../../../../..'
+
+alias 'cl'='clear'
 
 # get the error messages from journalctl
-alias je="journalctl -p 3 -xb"
+alias 'je'="journalctl -p 3 -xb"
 
 # always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
+alias 'mkdir'='mkdir -p'
 
 # package helper depends on function in env
-alias pap='$aurhelper -Qs|lolcat'                # list installed package
-alias pas='pacseek'                              # install
-alias pcc='$aurhelper -Sc'                       # clean unused cache
-alias pco='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
-alias pfp='$aurhelper -Qe|grep -E'               # check if package is installed.
-alias pun='$aurhelper -Rns'                      # uninstall package
+alias 'pap'='$aurhelper -Qs|lolcat'                # list installed package
+alias 'pas'='pacseek'                              # install
+alias 'pcc'='$aurhelper -Sc'                       # clean unused cache
+alias 'pco'='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-
+alias 'pfp'='$aurhelper -Qe|grep -E'               # check if package is installed.
+alias 'pun'='$aurhelper -Rns'                      # uninstall package
 
 # recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | lolcat"
-alias rm='echo "This is not the command you are looking for."; false'
+alias 'rip'="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl | lolcat"
+alias 'rm'='echo "This is not the command you are looking for."; false'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
-alias adsf='asdf'
+alias 'adsf'='asdf'
 
-alias ct='lolcat'
+alias 'ct'='lolcat'
 
-alias c='chezmoi'
-alias ce='chezmoi edit'
-alias cea='chezmoi edit .bash-aliases'
-alias ceh='chezmoi edit .config/hypr/userprefs.conf'
-alias cu='chezmoi update'
-alias cgp='chezmoi git pull'
+alias 'c'='chezmoi'
+alias 'ce'='chezmoi edit'
+alias 'cea'='chezmoi edit .bash-aliases'
+alias 'ceh'='chezmoi edit .config/hypr/userprefs.conf'
+alias 'cu'='chezmoi update'
+alias 'cgp'='chezmoi git pull'
 
-alias l='eza -lh --icons=auto'                                         # long list
-alias ls='eza -1 --icons=auto'                                         # short list
-alias ll='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
-alias ld='eza -lhD --icons=auto'                                       # long list dirs
-alias lt='eza --icons=auto --tree'                                     # list folder as treerep
+alias 'l'='eza -lh --icons=auto'                                         # long list
+alias 'ls'='eza -1 --icons=auto'                                         # short list
+alias 'll'='eza -Glha --icons=auto --sort=name --group-directories-last' # long list all
+alias 'ld'='eza -lhD --icons=auto'                                       # long list dirs
+alias 'lt'='eza --icons=auto --tree'                                     # list folder as treerep
 
-alias hd='hyprctl devices'
-alias hr='hyprctl reload'
+alias 'hd'='hyprctl devices'
+alias 'hr'='hyprctl reload'

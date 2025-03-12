@@ -30,7 +30,7 @@ alias 'je'="journalctl -p 3 -xb"
 alias 'mkdir'='mkdir -p'
 
 # package helper depends on function in env
-alias 'pap'='$aurhelper -Qs|lolcat'                # list installed package
+alias 'pap'='$aurhelper -Qs'                # list installed package
 alias 'pas'='pacseek'                              # install
 alias 'pcc'='$aurhelper -Sc'                       # clean unused cache
 alias 'pco'='$aurhelper -Qtdq | $aurhelper -Rns -' # clean orphaned and unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print i-

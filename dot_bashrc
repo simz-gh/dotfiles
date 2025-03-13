@@ -1,38 +1,30 @@
-#
-#
-#      ██╗███████╗    ██████╗  ██████╗ ██████╗ ███████╗
-#     ██╔╝██╔════╝    ╚════██╗██╔═████╗╚════██╗██╔════╝
-#    ██╔╝ ███████╗     █████╔╝██║██╔██║ █████╔╝███████╗
-#   ██╔╝  ╚════██║    ██╔═══╝ ████╔╝██║██╔═══╝ ╚════██║
-#  ██╔╝   ███████║    ███████╗╚██████╔╝███████╗███████║
-#  ╚═╝    ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝╚══════╝
-# https://patorjk.com/software/taag/ made w/ ANSI Shadow and Calvin S
+#         ...                         ..                   .x+=:.
+#     .x888888hx    :           . uW8"                    z`    ^%    .uef^"                                              oec :
+#    d88888888888hxx            `t888                        .   <k :d88E                           u.      u.    u.     @88888
+#   8" ... `"*8888%`             8888   .         u        .@8Ned8" `888E                .    ...ue888b   x@88k u@88c.   8"*88%
+#  !  "   ` .xnxx.               9888.z88N     us888u.   .@^%8888"   888E .z8k      .udR88N   888R Y888r ^"8888""8888"   8b.
+#  X X   .H8888888%:             9888  888E .@88 "8888" x88:  `)8b.  888E~?888L    <888'888k  888R I888>   8888  888R   u888888>
+#  X 'hn8888888*"   >            9888  888E 9888  9888  8888N=*8888  888E  888E    9888 'Y"   888R I888>   8888  888R    8888R
+#  X: `*88888%`     !            9888  888E 9888  9888   %8"    R88  888E  888E    9888       888R I888>   8888  888R    8888P
+#  '8h.. ``     ..x8>    .       9888  888E 9888  9888    @8Wou 9%   888E  888E    9888      u8888cJ888    8888  888R    *888>
+#   `88888888888888f   .@8c     .8888  888" 9888  9888  .888888P`    888E  888E    ?8888u../  "*888*P"    "*88*" 8888"   4888
+#    '%8888888888*"   '%888"     `%888*%"   "888*""888" `   ^"F     m888N= 888>     "8888P'     'Y"         ""   'Y"     '888
+#       ^"****""`       ^*          "`       ^Y"   ^Y'               `Y"   888        "P'                                 88R
+#                                                                         J88"                                            88>
+#                                                                         @%                                              48
+#                                                                       :"                                                '8
 # managed by chezmoi
-
-# ██████╗  █████╗ ███████╗██╗  ██╗
-# ██╔══██╗██╔══██╗██╔════╝██║  ██║
-# ██████╔╝███████║███████╗███████║
-# ██╔══██╗██╔══██║╚════██║██╔══██║
-# ██████╔╝██║  ██║███████║██║  ██║
-# ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-#
-#  ██████╗ ██████╗ ███╗   ██╗███████╗
-# ██╔════╝██╔═══██╗████╗  ██║██╔════╝
-# ██║     ██║   ██║██╔██╗ ██║█████╗
-# ██║     ██║   ██║██║╚██╗██║██╔══╝
-# ╚██████╗╚██████╔╝██║ ╚████║██║
-#  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝
 
 #  ┌─┐┬ ┬┌─┐┬  ┬    ┌─┐┌┬┐┬ ┬┌─┐┌─┐
 #  └─┐├─┤├┤ │  │    └─┐ │ │ │├┤ ├┤
 #  └─┘┴ ┴└─┘┴─┘┴─┘  └─┘ ┴ └─┘└  └
 
 # zsh features for bash -> https://github.com/akinomyoga/ble.sh/wiki
-[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
+#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 # completions
-if [ ~/.local/share/chezmoi/completion/chezmoi-completion.bash ]; then
-	. ~/.local/share/chezmoi/completion/chezmoi-completion.bash
+if [ /usr/share/bash-completion/completions/chezmoi-completion]; then
+	. /usr/share/bash-completion/completions/chezmoi-completion
 fi
 
 # managing environments -> https://asdf-vm.com/guide/getting-started.html
@@ -116,8 +108,7 @@ c() {
 #  ┌─┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┬┌─┐┌┐┌
 #  │  │ ││││├─┘│  ├┤  │ ││ ││││
 #  └─┘└─┘┴ ┴┴  ┴─┘└─┘ ┴ ┴└─┘┘└┘
-
-source ~/.local/share/chezmoi/completion/chezmoi-completion.bash
+#source /user/share/bash-completion/completions/chezmoi-completion
 
 #  ┌┬┐┌─┐┌─┐┬  ┌─┐
 #   │ │ ││ ││  └─┐
@@ -143,4 +134,4 @@ fi
 #  ├┤ │││ ││
 #  └─┘┘└┘─┴┘
 
-[[ ${BLE_VERSION-} ]] && ble-attach
+#[[ ${BLE_VERSION-} ]] && ble-attach

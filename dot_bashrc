@@ -114,11 +114,11 @@ c() {
 #   │ │ ││ ││  └─┐
 #   ┴ └─┘└─┘┴─┘└─┘
 
-fastfetch -c $HOME/.config/fastfetch/config.jsonc
+fastfetch -c "$HOME/.config/fastfetch/config.jsonc"
 
 # You can use whatever you want as an alias, like for Mondays:
 # eval $(thefuck --alias FUCK)
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 
 eval "$(starship init bash)"
 
@@ -126,8 +126,8 @@ eval "$(starship init bash)"
 #  ├┤ ┌┴┬┘ │ ├┬┘├─┤  │  │ ││││├┤
 #  └─┘┴ └─ ┴ ┴└─┴ ┴  └─┘└─┘┘└┘└
 
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+if [ -f "$HOME/bash_aliases" ]; then
+	. "$HOME/bash_aliases"
 fi
 
 #  ┌─┐┌┐┌┌┬┐

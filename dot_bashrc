@@ -23,7 +23,7 @@
 #[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 # completions
-if [ /usr/share/bash-completion/completions/chezmoi-completion]; then
+if [ /usr/share/bash-completion/completions/chezmoi-completion ]; then
 	. /usr/share/bash-completion/completions/chezmoi-completion
 fi
 

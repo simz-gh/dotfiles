@@ -63,3 +63,5 @@ alias 'lt'='eza --icons=auto --tree'                                     # list 
 
 alias 'hd'='hyprctl devices'
 alias 'hr'='hyprctl reload'
+
+alias 'n'='nvim'

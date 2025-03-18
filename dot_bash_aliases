@@ -65,4 +65,6 @@ alias 'lt'='eza --icons=auto --tree'                                     # list 
 alias 'hd'='hyprctl devices'
 alias 'hr'='hyprctl reload'
 
+alias 'kit'='cd ~/.config/kitty/themes && fzf --preview 'head -n 40 {} && kitty @ --to unix:/tmp/kitty set-colors -a -c {}'; cd -'
+
 alias 'n'='nvim'

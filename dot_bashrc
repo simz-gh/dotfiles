@@ -19,16 +19,9 @@
 #  └─┐├─┤├┤ │  │    └─┐ │ │ │├┤ ├┤
 #  └─┘┴ ┴└─┘┴─┘┴─┘  └─┘ ┴ └─┘└  └
 
-# zsh features for bash -> https://github.com/akinomyoga/ble.sh/wiki
-#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
-
-# completions
-if [ /usr/share/bash-completion/completions/chezmoi-completion ]; then
-	. /usr/share/bash-completion/completions/chezmoi-completion
+if [ /usr/share/bash-completion/completions/chezmoi ]; then
+	. /usr/share/bash-completion/completions/chezmoi
 fi
-
-# managing environments -> https://asdf-vm.com/guide/getting-started.html
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # changings defaults and shit
 export EDITOR=nvim
@@ -104,11 +97,6 @@ c() {
 		chezmoi "$@"
 	fi
 }
-
-#  ┌─┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┬┌─┐┌┐┌
-#  │  │ ││││├─┘│  ├┤  │ ││ ││││
-#  └─┘└─┘┴ ┴┴  ┴─┘└─┘ ┴ ┴└─┘┘└┘
-#source /user/share/bash-completion/completions/chezmoi-completion
 
 #  ┌┬┐┌─┐┌─┐┬  ┌─┐
 #   │ │ ││ ││  └─┐
